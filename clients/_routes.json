@@ -1,9 +1,1 @@
-{
-  "version": 1,
-  "rules": [
-    {
-      "pathname": "/clients/client1/*",
-      "custom_domain": "nokhoodi.ir"
-    }
-  ]
-}
+
