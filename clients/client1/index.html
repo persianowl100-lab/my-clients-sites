@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>سایت مشتری ۱</title>
+    <style>
+        body { font-family: Tahoma; max-width: 800px; margin: auto; padding: 20px; }
+        .edit-btn { background: #238636; color: white; padding: 10px; border-radius: 5px; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <!-- دکمه مدیریت -->
+    <a href="panel.html?token=CLIENT1_TOKEN" class="edit-btn">ویرایش سایت</a>
+    
+    <h1>خوش آمدید به سایت مشتری ۱</h1>
+    <p>این یک سایت نمونه است.</p>
+    <p>تلفن: ۰۹۱۲۳۴۵۶۷۸۹</p>
+    
+    <script>
+        // مخفی کردن دکمه اگر توکن نباشد
+        if(!window.location.search.includes('token=')) {
+            document.querySelector('.edit-btn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
