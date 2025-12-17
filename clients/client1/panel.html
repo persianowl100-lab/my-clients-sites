@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>پنل مدیریت</title>
+    <style>
+        body { font-family: Tahoma; padding: 20px; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; }
+        button { background: #238636; color: white; padding: 12px 24px; border: none; border-radius: 6px; cursor: pointer; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    
+    <div id="login">
+        <h2>ورود به پنل مدیریت</h2>
+        <input type="password" id="password" placeholder="رمز ورود (توکن)">
+        <button onclick="checkPassword()">ورود</button>
+    </div>
+    
+    <div id="panel" class="hidden">
+        <h2>پنل مدیریت سایت</h2>
+        <p>آخرین ویرایش: <span id="lastEdit">-</span></p>
+        
+        <label>عنوان سایت:</label>
+        <input type="text" id="title" value="سایت مشتری ۱">
+        
+        <label>شماره تماس:</label>
+        <input type="text" id="phone" value="۰۹۱۲۳۴۵۶۷۸۹">
+        
+        <label>محتوا:</label>
+        <textarea id="content" rows="10">به سایت ما خوش آمدید...</textarea>
+        
+        <button onclick="saveChanges()">💾 ذخیره تغییرات</button>
+        <button onclick="preview()">👁️ پیش‌نمایش</button>
+    </div>
+    
+    <script>
+    // رمز هر مشتری (برای مشتری ۱)
+    const CLIENT_TOKEN = "CLIENT1_TOKEN";
+    
+    function checkPassword() {
+        const pass = document.getElementById('password').value;
+        if(pass === CLIENT_TOKEN) {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('panel').classList.remove('hidden');
+            loadContent();
+        } else {
+            alert('رمز اشتباه است!');
+        }
+    }
+    
+    function loadContent() {
+        // اینجا می‌توانید محتوای فعلی را از GitHub بخوانید
+        document.getElementById('lastEdit').textContent = new Date().toLocaleDateString('fa-IR');
+    }
+    
+    function saveChanges() {
+        // در اینجا باید کدی برای ذخیره در GitHub بنویسید
+        alert('تغییرات ذخیره شد! سایت در چند دقیقه آپدیت می‌شود.');
+        document.getElementById('lastEdit').textContent = new Date().toLocaleDateString('fa-IR');
+    }
+    
+    function preview() {
+        window.open('../client1/index.html?token=' + CLIENT_TOKEN, '_blank');
+    }
+    
+    // اگر توکن در آدرس بود، مستقیم وارد شود
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    if(token === CLIENT_TOKEN) {
+        document.getElementById('password').value = token;
+        checkPassword();
+    }
+    </script>
+</body>
+</html>
