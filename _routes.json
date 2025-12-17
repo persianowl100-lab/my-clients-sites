@@ -2,6 +2,11 @@
   "version": 1,
   "rules": [
     {
+      "pathname": "/",
+      "custom_domain": "nokhoodi.ir",
+      "forward": "/clients/client1/"
+    },
+    {
       "pathname": "/clients/client1/*",
       "custom_domain": "nokhoodi.ir"
     }
